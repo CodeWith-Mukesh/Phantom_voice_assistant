@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voice AI Assistant</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="ai-interface">
+    <!-- Small Logo -->
+    <div class="logo"><img src="spark.png" alt="AI Logo"></div>
+
+    <!-- Background Particles -->
+    <div class="particle-field"></div>
+
+    <!-- Left Info Panel -->
+    <div class="info-panel">
+      <h3>About Voice AI Assistant</h3>
+      <p>Our advanced voice AI assistant leverages cutting-edge natural language processing and machine learning to deliver seamless, intelligent interactions. Key features include:</p>
+      <ul>
+        <li>Real-time voice recognition and synthesis</li>
+        <li>Multi-language support</li>
+        <li>Secure cloud integration</li>
+        <li>Customizable responses</li>
+      </ul>
+      <div class="contact-info"><p>For support, contact us at @help4U.in</p></div>
+    </div>
+
+    <!-- Central AI Core -->
+    <div class="ai-core">
+      <div class="waveform">
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+        <div class="wave-bar"></div>
+      </div>
+      <div class="core-ring"></div>
+      <div class="black-ball" id="black-ball" style="display: none;"></div>
+    </div>
+
+    <!-- Right Panel Widgets -->
+    <div class="right-panel">
+      <div class="widget" id="news-widget"><h4>Today's News</h4><p>Click to get latest headlines.</p></div>
+      <div class="widget" id="stocks-widget"><h4>Stock Prices</h4><p>Click for market updates.</p></div>
+      <div class="widget" id="sports-widget"><h4>Sports Scores</h4><p>Click for live scores.</p></div>
+    </div>
+
+    <!-- Overlays -->
+    <div class="overlay status-overlay"><span class="status-text">Listening...</span></div>
+    <div class="overlay response-overlay"><p class="response-text">How can I assist you today?</p></div>
+
+    <!-- Voice Button -->
+    <button class="voice-btn" id="mic"><i class="fa-solid fa-microphone btn-icon"></i></button>
+  </div>
+
+  <script>
+    const voiceBtn = document.getElementById('mic');
+    const interfaceEl = document.querySelector('.ai-interface');
+    const waveform = document.querySelector('.waveform');
+    const coreRing = document.querySelector('.core-ring');
+    const blackBall = document.getElementById('black-ball');
+    let isMuted = true;
+
+    voiceBtn.addEventListener('click', () => {
+      isMuted = !isMuted;
+      if (isMuted) {
+        interfaceEl.classList.remove('unmuted');
+        voiceBtn.classList.remove('active');
+        waveform.style.display = 'none';
+        coreRing.style.display = 'none';
+        blackBall.style.display = 'block';
+      } else {
+        interfaceEl.classList.add('unmuted');
+        voiceBtn.classList.add('active');
+        waveform.style.display = 'flex';
+        coreRing.style.display = 'block';
+        blackBall.style.display = 'none';
+      }
+    });
+
+    const responseText = document.querySelector('.response-text');
+    document.getElementById('news-widget').addEventListener('click', () => {
+      responseText.textContent = "Fetching today's news... Latest headlines: [Simulated] Tech stocks rise amid AI boom.";
+    });
+    document.getElementById('stocks-widget').addEventListener('click', () => {
+      responseText.textContent = "Fetching stock prices... NASDAQ: 15,200 | S&P 500: 4,500.";
+    });
+    document.getElementById('sports-widget').addEventListener('click', () => {
+      responseText.textContent = "Fetching sports scores... NBA: Lakers 102 - Warriors 98 | Soccer: Man City 2 - Arsenal 1.";
+    });
+  </script>
+   <script>
+        let isRunning = false;
+
+        document.getElementById("mic").onclick = function () {
+            if (!isRunning) {
+                fetch("/start", { method: "POST" });
+                this.innerText = "⏹ Stop";
+            } else {
+                fetch("/stop", { method: "POST" });
+                this.innerText = " Start";
+            }
+            isRunning = !isRunning;
+        };
+    </script>
+</body>
+</html>
