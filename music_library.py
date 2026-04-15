@@ -1,6 +1,15 @@
 music = {
-    "radha":"https://www.youtube.com/watch?v=e_Tla6cpyC8&list=RDe_Tla6cpyC8&start_radio=1",
-    "Rama":"https://www.youtube.com/watch?v=EHkncEspk6Q&list=RDe_Tla6cpyC8&index=15",
+    "devotional":"https://www.youtube.com/watch?v=e_Tla6cpyC8&list=RDe_Tla6cpyC8&start_radio=1",
+    "let me down slowly":"https://www.youtube.com/watch?v=ml3vTanQPW4&list=RDml3vTanQPW4&start_radio=1",
     "my shoes":"https://www.youtube.com/watch?v=XV--2ysknlk&list=RDe_Tla6cpyC8&index=3",
     "sky":"https://www.youtube.com/watch?v=9zQAIBFG-Vw&list=RD9zQAIBFG-Vw&start_radio=1",
+    "beliver":"https://www.youtube.com/watch?v=W0DM5lcj6mw&list=RDW0DM5lcj6mw&start_radio=1",
+    "sapphire":"https://www.youtube.com/watch?v=JgDNFQ2RaLQ&list=RDJgDNFQ2RaLQ&start_radio=1",
+    "wake me up":"https://www.youtube.com/watch?v=YdKwr0l176M&list=RDYdKwr0l176M&start_radio=1",
+    "love me like you do":"https://www.youtube.com/watch?v=JrNMyzsYr4M&list=RDJrNMyzsYr4M&start_radio=1",
+    "baby":"https://www.youtube.com/watch?v=hRw4cmwK_YE&list=RDhRw4cmwK_YE&start_radio=1",
+    "perfect":"https://www.youtube.com/watch?v=cNGjD0VG4R8&list=RDcNGjD0VG4R8&start_radio=1",
+    "Night changes":"https://www.youtube.com/watch?v=I3IcQsfC7jA&list=RDI3IcQsfC7jA&start_radio=1",
+    "bairan":"https://www.youtube.com/watch?v=JEJML7Quej0&list=RDJEJML7Quej0&start_radio=1",
+    "alakh niranjan":"https://www.youtube.com/watch?v=tkPAJPgWNr0&list=RDtkPAJPgWNr0&start_radio=1",
 }
