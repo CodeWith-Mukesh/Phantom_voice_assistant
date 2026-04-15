@@ -1,36 +1,39 @@
-# from dotenv import load_dotenv
-# import os
-# from livekit import api
-
-# load_dotenv()
-
-# LIVEKIT_API_KEY = os.getenv("LIVEKIT_API_KEY")
-# LIVEKIT_API_SECRET = os.getenv("LIVEKIT_API_SECRET")
-
-# token = api.AccessToken('LIVEKIT_API_KEY','LIVEKIT_API_SECRET') \
-#         .with_identity("user1") \ 
-#         .with_name("Mukesh") \ 
-
 import requests
 
 def ask_llm(user_input):
     sys_prompt = """
-You are Phantom, Mukesh's personal assistant.
-Rules:
-- Answer in 1-2 lines only
-- Be clear and helpful
+You are Phantom an voice assstant.
+Created by 'Mukesh' as his personal assistant.
+
+you have to Always Answer in 1-2 lines only .
+you have to Be clear and helpful.
 """
-    
-    prompt = sys_prompt+"\nUser: "+user_input+"\nAssistant"
+    prompt = sys_prompt + user_input
     try:
         response = requests.post(
-            "http://localhost:11434/api/generate",
+            "http://127.0.0.1:11434/api/generate",
             json={
-                "model": "phi",   # best for your 8GB RAM
+                "model": "phi",    #Can use big models also.
                 "prompt": prompt,
-                "stream": False
-            }
+                "stream": True 
+            },
+            stream=True,
+            timeout=60
         )
+
+        full_response = ""
+
+        for line in response.iter_lines():
+            if line:
+                data = line.decode("utf-8")
+                import json
+                json_data = json.loads(data)
+
+                full_response += json_data.get("response", "")
+
+        return full_response.strip()
+
     except Exception as e:
+        print("ERROR:", e)
         return "Error connecting to AI"
     
